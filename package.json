@@ -1,0 +1,12 @@
+{
+  "name": "ng-kzsidenav",
+  "version": "0.0.7",
+  "description": "An Angular Sidenav Component",
+  "keywords": ["angular","angular sidenav","angular sidebar","sidenav","side nav","sidebar","side bar","menu","sidemenu","side menu","panel","sidepanel","side panel"],
+  "author": "Syed Kumail Abbas Zaidi",
+  "license":"MIT",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  }
+}
