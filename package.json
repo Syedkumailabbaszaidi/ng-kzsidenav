@@ -3,8 +3,16 @@
   "version": "0.0.7",
   "description": "An Angular Sidenav Component",
   "keywords": ["angular","angular sidenav","angular sidebar","sidenav","side nav","sidebar","side bar","menu","sidemenu","side menu","panel","sidepanel","side panel"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syedkumailabbaszaidi/ng-kzsidenav.git"
+  },
   "author": "Syed Kumail Abbas Zaidi",
   "license":"MIT",
+  "bugs": {
+    "url": "https://github.com/Syedkumailabbaszaidi/ng-kzsidenav/issues"
+  },
+  "homepage": "https://github.com/Syedkumailabbaszaidi/ng-kzsidenav#readme",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
