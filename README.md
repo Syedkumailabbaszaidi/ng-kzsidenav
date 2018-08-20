@@ -104,6 +104,8 @@ The kzsidenav has a few public functions:
 | -------- | ----------- |
 | `open()` | Opens the sidenav. |
 | `close()` | Closes the sidenav. |
+| `toggle()` | toggles the sidenav. |
+| `currentState()` | Returns the current state of sidenav. |
 
 ## Options
 
@@ -118,6 +120,7 @@ The kzsidenav has a few input properties:
 | state | `open`,`close` | `open` | At what state the sidenav should be initialized when the page loads. |
 | openSize | number | `250px` | Specify open width of sidenav with valid css dimension. |
 | closeSize | number | `0` | Specify close width of sidenav with valid css dimension. |
+| hoverAnimation | | | Whether to animate the sidenav on mouse enter and mouse leave when sidenav is closed. |
 
 ### Modes
 

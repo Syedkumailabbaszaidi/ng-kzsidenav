@@ -1,4 +1,4 @@
-import { Directive, HostBinding, ElementRef, OnInit, Input } from '@angular/core';
+import { Directive, HostBinding, ElementRef, OnInit, Input, HostListener } from '@angular/core';
 
 @Directive({
   selector: 'kzsidenav',
@@ -17,13 +17,26 @@ export class KZSidenavDirective implements OnInit {
   @Input("state") _state: string;
   @Input("openSize") _openSize: string;
   @Input("closeSize") _closeSize: string;
+  @Input("hoverAnimation") _hoverAnimation: string;
+
+  @HostListener("mouseover")
+  navOpen() {
+    if (typeof (this._hoverAnimation) != "undefined" && this._state == 'close')
+      this.openNav();
+  }
+  @HostListener("mouseout")
+  navClose() {
+    if (typeof (this._hoverAnimation) != "undefined" && this._state == 'close')
+      this.closeNav();
+  }
+
+
   constructor(kzSidenav: ElementRef) {
     this.__kzSidenav = kzSidenav.nativeElement;
   }
 
   ngOnInit() {
     this.__kzMain = this.__kzSidenav.nextElementSibling;
-    console.log(this._state)
     // Sidenav Mode Property
     this._mode = (typeof (this._mode) == "undefined") ? "push" : this._mode;
     // Sidenav Position Property
@@ -50,7 +63,47 @@ export class KZSidenavDirective implements OnInit {
     }
   }
 
-  open() {
+  /**
+   *  This function opens the sidenav as well as changing the state of the sidenav
+   */
+  public open(): void {
+    this._state = "open";
+    this.openNav();
+  }
+
+  /**
+   *  This function closes the sidenav as well as changing the state of the sidenav
+   */
+  public close(): void {
+    this._state = 'close';
+    this.closeNav();
+  }
+
+  /**
+   *  This function toggles the sidenav as well as changing the state of the sidenav
+   */
+  public toggle(): void {
+    switch (this._state) {
+      case 'open':
+        this.close();
+        break;
+      case 'close':
+        this.open();
+        break;
+    }
+  }
+
+  /**
+   *  This function returns the current state of the sidenav
+   */
+  public currentState(): string {
+    return this._state;
+  }
+
+  /**
+   *  This function opens the sidenav without changing the state of the sidenav
+   */
+  private openNav(): void {
     switch (this._mode) {
       case 'overlay':
         this.__kzSidenav.style.width = this._openSize;
@@ -84,7 +137,11 @@ export class KZSidenavDirective implements OnInit {
         break;
     }
   }
-  close() {
+
+  /**
+   *  This function closes the sidenav without changing the state of the sidenav
+   */
+  private closeNav(): void {
     switch (this._mode) {
       case 'overlay':
         this.__kzSidenav.style.width = this._closeSize;
